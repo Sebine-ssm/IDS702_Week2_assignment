@@ -91,11 +91,32 @@ Created a Test file called 'Test_analysis.py' which has 4 tests that consists of
 - **test_load_data**:  
   Confirms that the data loading function reads the CSV file and returns a DataFrame with the expected columns and shape.
 
-- **test_regression_model**:  
-  Tests that the regression model is trained correctly and produces output metrics (e.g., coefficients, r2_score, mean_squared_error).
+-**test_model_training**:
+	Confirms that Linear Regression can be trained successfully on the cleaned dataset.
+ 	Model fits without error using variables like 'Age', 'BMI', 'Sleep_Hours', and 'Heart_Rate'.
+  	Predictions are generated.
+   	The number of predictions matches the number of samples.
 
-- **test_visualizations**:  
-  Checks that visualization functions (scatterplot, bar graph, regression plots) run without errors and produce expected plot objects.
+ **test_end_to_end_flow**:
+ 	Tests that complete data workflow from synthetic data generation, cleaning to model training and evaluation.
+  		-No null values remain after cleaning.
+		-BMI values stay within defined bounds.
+  		-Model trains and predicts on train/spilt data.
+		-Evaluation metrics (MSE, R-squared) are within ranges.
+  
+## Setup Instructions
+Ensure you have the following installed:
+Python 3.x
+Pandas
+Numpy
+Scikit-learn
+Unittest (built-in)
+The test assumes the analysis.py is located in the same directory.
+Install dependencies if needed.
+
+```
+pip install pandas numpy scikit-learn
+``
 
 ## Running Tests
 
