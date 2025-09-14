@@ -114,7 +114,9 @@ Created a Test file called 'Test_analysis.py' which has 4 tests that consists of
 - The test assumes the analysis.py is located in the same directory.
 - Install dependencies if needed.
 
+```sh
 pip install pandas numpy scikit-learn
+```
 
 ## Running Tests
 
