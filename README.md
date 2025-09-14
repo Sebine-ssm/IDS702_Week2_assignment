@@ -30,21 +30,21 @@ clean:
 all:
 	install format lint 
 
-## requirement.txt
-
-pylint
-flake8
-pytest
-click
-black
-pytest-cov
-pandas
-numpy
-plotly.express
-matplotlib
-polars
-scikit-learn
-seaborn
+## Requirements: 
+-The code inside the requirements.txt file is:
+-pylint
+-flake8
+-pytest
+-click
+-black
+-pytest-cov
+-pandas
+-numpy
+-plotly.express
+-matplotlib
+-polars
+-scikit-learn
+-seaborn
 
 ## Dataset
 Dataset contains information about Age, Gender, Country, Coffee Intake (in cups), Sleep Hours, Caffeiene consumption in mg, Hours of Physical Activity, Sleep Quality, BMI, Heart Rate, Stress Level, Health Issues, Occupation, Smoking, and Alcohol Consumption varaibles. It has 4057 rows and 16 columns.
