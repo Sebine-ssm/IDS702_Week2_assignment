@@ -1,6 +1,7 @@
 pylint
 flake8
 pytest
+pytest-cov
 click
 black
 pytest-cov

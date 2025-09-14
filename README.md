@@ -49,30 +49,6 @@ seaborn
 ## Dataset
 Dataset contains information about Age, Gender, Country, Coffee Intake (in cups), Sleep Hours, Caffeiene consumption in mg, Hours of Physical Activity, Sleep Quality, BMI, Heart Rate, Stress Level, Health Issues, Occupation, Smoking, and Alcohol Consumption varaibles. It has 4057 rows and 16 columns.
 
-<class 'pandas.core.frame.DataFrame'>
-Index: 4057 entries, 2 to 9997
-Data columns (total 16 columns):
- #   Column                   Non-Null Count  Dtype  
----  ------                   --------------  -----  
- 0   ID                       4057 non-null   int64  
- 1   Age                      4057 non-null   int64  
- 2   Gender                   4057 non-null   object 
- 3   Country                  4057 non-null   object 
- 4   Coffee_Intake            4057 non-null   float64
- 5   Caffeine_mg              4057 non-null   float64
- 6   Sleep_Hours              4057 non-null   float64
- 7   Sleep_Quality            4057 non-null   object 
- 8   BMI                      4057 non-null   float64
- 9   Heart_Rate               4057 non-null   int64  
- 10  Stress_Level             4057 non-null   object 
- 11  Physical_Activity_Hours  4057 non-null   float64
- 12  Health_Issues            4057 non-null   object 
- 13  Occupation               4057 non-null   object 
- 14  Smoking                  4057 non-null   int64  
- 15  Alcohol_Consumption      4057 non-null   int64  
-dtypes: float64(5), int64(5), object(6)
-memory usage: 538.8+ KB
-
 ## Data Exploration
 There were some duplicates and null values which I cleaned. Some insights which I found:
 
@@ -101,8 +77,53 @@ From the scatterplot and regression plots, we can see that the relationship betw
 
 From my analysis I conclude that there is a poor correlation between Age, Caffeine_mg, Coffee_Intake, BMI, and Sleep_Hours, with Heart_Rate.
 
+# Tests
 
+Created a Test file called 'Test_analysis.py' which has 4 tests that consists of unit tests and a system test. This project includes automated tests in `Test_analysis.py` to ensure data cleaning and analysis functions work as expected.
 
+## Test Descriptions
+
+- **test_clean_data**:  
+  Verifies that the `clean_data()` function correctly filters invalid, missing, or out-of-range data.  
+  - Checks removal of rows with missing or out-of-bound values in 'Age', 'BMI', 'Sleep_Hours', and 'Heart_Rate'.
+  - Ensures median imputation for missing BMI values.
+
+- **test_load_data**:  
+  Confirms that the data loading function reads the CSV file and returns a DataFrame with the expected columns and shape.
+
+- **test_regression_model**:  
+  Tests that the regression model is trained correctly and produces output metrics (e.g., coefficients, r2_score, mean_squared_error).
+
+- **test_visualizations**:  
+  Checks that visualization functions (scatterplot, bar graph, regression plots) run without errors and produce expected plot objects.
+
+## Running Tests
+
+To run all tests, use:
+
+```sh
+pytest Test_analysis.py
+```
+
+For coverage report:
+
+```sh
+pytest --cov=analysis Test_analysis.py
+```
+
+To run all Makefile tasks (including linting and formatting):
+
+```sh
+make all
+```
+
+Make sure you have installed all dependencies:
+
+```sh
+pip install -r requirements.txt
+```
+
+These tests help ensure the reliability and reproducibility of your data analysis workflow.
 
 
 
