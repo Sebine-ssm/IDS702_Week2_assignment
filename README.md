@@ -49,30 +49,6 @@ seaborn
 ## Dataset
 Dataset contains information about Age, Gender, Country, Coffee Intake (in cups), Sleep Hours, Caffeiene consumption in mg, Hours of Physical Activity, Sleep Quality, BMI, Heart Rate, Stress Level, Health Issues, Occupation, Smoking, and Alcohol Consumption varaibles. It has 4057 rows and 16 columns.
 
-<class 'pandas.core.frame.DataFrame'>
-Index: 4057 entries, 2 to 9997
-Data columns (total 16 columns):
- #   Column                   Non-Null Count  Dtype  
----  ------                   --------------  -----  
- 0   ID                       4057 non-null   int64  
- 1   Age                      4057 non-null   int64  
- 2   Gender                   4057 non-null   object 
- 3   Country                  4057 non-null   object 
- 4   Coffee_Intake            4057 non-null   float64
- 5   Caffeine_mg              4057 non-null   float64
- 6   Sleep_Hours              4057 non-null   float64
- 7   Sleep_Quality            4057 non-null   object 
- 8   BMI                      4057 non-null   float64
- 9   Heart_Rate               4057 non-null   int64  
- 10  Stress_Level             4057 non-null   object 
- 11  Physical_Activity_Hours  4057 non-null   float64
- 12  Health_Issues            4057 non-null   object 
- 13  Occupation               4057 non-null   object 
- 14  Smoking                  4057 non-null   int64  
- 15  Alcohol_Consumption      4057 non-null   int64  
-dtypes: float64(5), int64(5), object(6)
-memory usage: 538.8+ KB
-
 ## Data Exploration
 There were some duplicates and null values which I cleaned. Some insights which I found:
 
@@ -100,6 +76,8 @@ Created a scatterplot, bar graph and a few regression plots to visualize the res
 From the scatterplot and regression plots, we can see that the relationship between the variables ploted in those graphs have poor correlation. Created a bar graph to just see the proportion of people (categorized by gender) to see how they consume coffee. 
 
 From my analysis I conclude that there is a poor correlation between Age, Caffeine_mg, Coffee_Intake, BMI, and Sleep_Hours, with Heart_Rate.
+
+
 
 
 
