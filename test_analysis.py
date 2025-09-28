@@ -3,34 +3,15 @@ import numpy as np
 import unittest
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, r2_score  # For regression metrics
-from analysis import clean_data, analyze_data
+from sklearn.metrics import mean_squared_error, r2_score
+import analysis
 
+# deleted clean_data and analyze_data unittests to avoid duplication as a part of refactoring. 
 def load_path(file_path):
+    """ Loads data from a given text file """
     with open(file_path, "r") as file:
         path = file.read().strip().split("\n")
     return path
-
-
-def clean_data(df):
-    df["BMI"] = df["BMI"].fillna(df["BMI"].median())
-    df = df.dropna()
-    df = df.drop_duplicates(keep="first")
-    df = df[df["Age"].between(10, 100)]
-    df = df[df["Sleep_Hours"].between(0, 24)]
-    df = df[df["BMI"].between(0, 40)]
-    df = df[df["Heart_Rate"].between(0, 120)]
-    return df
-
-
-def analyze_data(df):
-    analysis = {}
-    analysis["average_age"] = df["Age"].mean()
-    analysis["average_bmi"] = df["BMI"].mean()
-    analysis["average_sleep_hours"] = df["Sleep_Hours"].mean()
-    analysis["average_heart_rate"] = df["Heart_Rate"].mean()
-    return analysis
-
 
 class TestAnalysis(unittest.TestCase):
     def setUp(self):
@@ -43,37 +24,38 @@ class TestAnalysis(unittest.TestCase):
             }
         )
 
+# refactored by using extract method
+    def get_clean_data(self):
+        return analysis.clean_data(self.df)
+
     def test_clean_data(self):
-        cleaned_df = clean_data(self.df)
+        cleaned_df = self.get_clean_data()
         self.assertEqual(len(cleaned_df), 3)
-        self.assertTrue(all(cleaned_df["Age"].between(10, 100)))
-        self.assertTrue(all(cleaned_df["Sleep_Hours"].between(0, 24)))
-        self.assertTrue(all(cleaned_df["BMI"].between(0, 40)))
-        self.assertTrue(all(cleaned_df["Heart_Rate"].between(0, 120)))
+        self.assertTrue((cleaned_df["Age"].between(10, 100)).all())
+        self.assertTrue((cleaned_df["Sleep_Hours"].between(0, 24)).all())
+        self.assertTrue((cleaned_df["BMI"].between(0, 40)).all())
+        self.assertTrue((cleaned_df["Heart_Rate"].between(0, 120)).all())
 
     def test_analyze_data(self):
-        cleaned_df = clean_data(self.df)
-        analysis = analyze_data(cleaned_df)
-        self.assertAlmostEqual(analysis["average_age"], (25 + 30 + 35) / 3)
-        expected_bmi = (22.5 + 27.8 + 28.9) / 3  
-        self.assertAlmostEqual(
-            analysis["average_bmi"], expected_bmi
-        )  
-        self.assertAlmostEqual(analysis["average_sleep_hours"], (7 + 8 + 6) / 3)
-        self.assertAlmostEqual(analysis["average_heart_rate"], (70 + 75 + 80) / 3)
+        cleaned_df = self.get_clean_data()
+        analyzis = analysis.analyze_data(cleaned_df)
+        self.assertAlmostEqual(analyzis["average_age"], (25 + 30 + 35) / 3)
+        expected_bmi = (22.5 + 27.8 + 28.9) / 3
+        self.assertAlmostEqual(analyzis["average_bmi"], expected_bmi)
+        self.assertAlmostEqual(analyzis["average_sleep_hours"], (7 + 8 + 6) / 3)
+        self.assertAlmostEqual(analyzis["average_heart_rate"], (70 + 75 + 80) / 3)
 
     def test_model_training(self):
-        cleaned_df = clean_data(self.df)
+        cleaned_df = self.get_clean_data()
         X = cleaned_df[["Age", "BMI", "Sleep_Hours"]]
         y = cleaned_df["Heart_Rate"]
         model = LinearRegression()
         model.fit(X, y)
         predictions = model.predict(X)
         self.assertEqual(len(predictions), len(y))
-        self.assertTrue(all(isinstance(pred, float) for pred in predictions))
+        self.assertTrue((isinstance(pred, float).all() for pred in predictions)) 
 
     def test_end_to_end_flow(self):
-        # Create synthetic data inline
         df = pd.DataFrame(
             {
                 "Age": np.random.randint(20, 60, 100),
@@ -85,14 +67,15 @@ class TestAnalysis(unittest.TestCase):
                 "Physical_Activity_Hours": np.random.uniform(0, 5, 100),
             }
         )
+    # refactored by changing df_cleaned variable name to df_clean
+        df_clean = analysis.clean_data(df)
 
-        df_cleaned = clean_data(df)
+        self.assertFalse(df_clean.isnull().values.any())
+        self.assertTrue((df_clean["BMI"] <= 40).all())
 
-        self.assertFalse(df_cleaned.isnull().values.any())
-        self.assertTrue((df_cleaned["BMI"] <= 40).all())
-
-        X = df_cleaned[["Age", "Caffeine_mg", "Coffee_Intake", "BMI", "Sleep_Hours"]]
-        y = df_cleaned[["Heart_Rate"]]
+        cols = ["Age", "Caffeine_mg", "Coffee_Intake", "BMI", "Sleep_Hours"]
+        X = df_clean[cols]
+        y = df_clean[["Heart_Rate"]]
         X_train, X_test, y_train, y_test = train_test_split(
             X, y, test_size=0.2, random_state=42
         )

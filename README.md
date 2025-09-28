@@ -2,7 +2,7 @@
 Global Coffee Health Dataset
 
 ## Project Overview
-This project analyzes the relationship between Coffee Consumption, Sleeping hours, Age, and BMI with Heart rate. The goal of this project is to see if there is there is a positive relationship between these two variables or no. 
+This project analyzes the relationship between Coffee Consumption, Sleeping hours, Age, and BMI with Heart rate. The goal of this project is to see if there is a positive relationship between these two variables or not. 
 
 ## Project Structure
 
@@ -11,6 +11,14 @@ This project analyzes the relationship between Coffee Consumption, Sleeping hour
 - `requirements.txt`: Python dependencies.
 - `Makefile`: Common commands for setup and running analysis.
 - `.gitignore`: Files and folders excluded from version control.
+
+## Devcontainer 
+This project uses a GitHub Codespace with a Devcontainer which provides a cloud-based development environment which is easy for anyone to code. Having a Devcontainer makes your life easier since it would create it's own environment on which you can work on the project without causing any dependency or software issues with your computer. 
+
+# Prerequisites:
+- A GitHub account
+- Access to the repository (if the repo is public or if you have appropriate permissions.)
+- Github Codespace or you can even download or clone the repo to work on the project locally.
 
 ## Makefile Setup
 
@@ -46,8 +54,13 @@ all:
  	- scikit-learn
 	- seaborn
 
+## Creating files
+touch Makefile
+touch analysis.py
+touch requirements.txt
+
 ## Dataset
-Dataset contains information about Age, Gender, Country, Coffee Intake (in cups), Sleep Hours, Caffeiene consumption in mg, Hours of Physical Activity, Sleep Quality, BMI, Heart Rate, Stress Level, Health Issues, Occupation, Smoking, and Alcohol Consumption varaibles. It has 4057 rows and 16 columns.
+Dataset contains information about Age, Gender, Country, Coffee Intake (in cups), Sleep Hours, Caffeiene consumption in mg, Hours of Physical Activity, Sleep Quality, BMI, Heart Rate, Stress Level, Health Issues, Occupation, Smoking, and Alcohol Consumption varaibles. It has 4057 rows and 16 columns. The name of the file of the dataset is 'synthetic_coffee_health.csv 
 
 ## Data Exploration
 There were some duplicates and null values which I cleaned. Some insights which I found:
@@ -73,7 +86,14 @@ Performed Multiple Linear Regression and found out some interesting insights. Th
 
 Created a scatterplot, bar graph and a few regression plots to visualize the results.
 
-From the scatterplot and regression plots, we can see that the relationship between the variables ploted in those graphs have poor correlation. Created a bar graph to just see the proportion of people (categorized by gender) to see how they consume coffee. 
+From the scatterplot and regression plots, we can see that the relationship between the variables ploted in those graphs have poor correlation. Created a bar graph to just see the proportion of people (categorized by gender) to see how they consume coffee. We can see that men drink little more than women and other. 
+
+## Pictures of plots
+![BMI vs Coffee Intake (scatterplot)](image-1.png)
+![BMI vs Caffeine (regression plot)](image.png)
+![Heart Rate vs Coffee Intake (scatterplot)](image-2.png)
+![Coffee Intake by Gender](image-3.png)
+
 
 From my analysis I conclude that there is a poor correlation between Age, Caffeine_mg, Coffee_Intake, BMI, and Sleep_Hours, with Heart_Rate.
 
@@ -89,7 +109,7 @@ Created a Test file called 'Test_analysis.py' which has 4 tests that consists of
   - Ensures median imputation for missing BMI values.
 
 - **test_load_data**:  
-  Confirms that the data loading function reads the CSV file and returns a DataFrame with the expected columns and shape.
+  Confirms that the data loading function reads a file and returns a DataFrame with the expected columns and shape.
 
 - **test_model_training**:
 	Confirms that Linear Regression can be trained successfully on the cleaned dataset.
@@ -97,7 +117,25 @@ Created a Test file called 'Test_analysis.py' which has 4 tests that consists of
   	Predictions are generated.
    	The number of predictions matches the number of samples.
 
- - **test_end_to_end_flow**:
+<<<<<<< HEAD
+ # Tests
+
+Created a Test file called 'Test_analysis.py' which has 4 tests that consists of unit tests and a system test. This project includes automated tests in `Test_analysis.py` to ensure data cleaning and analysis functions work as expected.
+
+## Test Descriptions
+
+- **test_clean_data**:  
+  Verifies that the `clean_data()` function correctly filters invalid, missing, or out-of-range data.  
+  - Checks removal of rows with missing or out-of-bound values in 'Age', 'BMI', 'Sleep_Hours', and 'Heart_Rate'.
+  - Ensures median imputation for missing BMI values.
+
+- **test_load_data**:  
+  Confirms that the data loading function reads a file and returns a DataFrame with the expected columns and shape.
+
+- **test_regression_model**:  
+  Tests that the regression model is trained correctly and produces output metrics (e.g., coefficients, r2_score, mean_squared_error).
+ 
+ **test_end_to_end_flow**:
  	Tests that complete data workflow from synthetic data generation, cleaning to model training and evaluation.
   		-No null values remain after cleaning.
 		-BMI values stay within defined bounds.
@@ -123,7 +161,7 @@ pip install pandas numpy scikit-learn
 To run all tests, use:
 
 ```sh
-pytest Test_analysis.py
+pytest test_analysis.py
 ```
 
 For coverage report:
