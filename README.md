@@ -2,7 +2,7 @@
 
 ## Project Structure
 
-- `devcontainer': The devcontainer file (more about it in the description).
+- `devcontainer`: The devcontainer file (more about it in the description).
 - `.gitignore`: Files and folders excluded from version control.
 - `Makefile`: Common commands for setup and running analysis.
 - `README`: The README file which talks about the files used,
