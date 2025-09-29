@@ -116,7 +116,9 @@ y_pred
 print("Mean_sq_error : ", mean_squared_error(y_test, y_pred))
 print("r_sqd : ", r2_score(y_test, y_pred))
 
-coeff = pd.DataFrame({"Feature": X_train.columns, "Coefficient": model.coef_.flatten()})
+feature_c = "Feature": X_train.columns
+coeff =  "Coefficient": model.coef_.flatten()
+coeff = pd.DataFrame({feature_c, coeff})
 print(coeff)
 
 
