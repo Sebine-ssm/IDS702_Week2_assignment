@@ -119,7 +119,6 @@ Created a Test file called 'Test_analysis.py' which has 4 tests that consists of
   	Predictions are generated.
    	The number of predictions matches the number of samples.
 
-<<<<<<< HEAD
  # Tests
 
 Created a Test file called 'Test_analysis.py' which has 4 tests that consists of unit tests and a system test. This project includes automated tests in `Test_analysis.py` to ensure data cleaning and analysis functions work as expected.
