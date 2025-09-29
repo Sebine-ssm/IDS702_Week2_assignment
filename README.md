@@ -1,3 +1,5 @@
+[![Python Template for IDS706](https://github.com/Sebine-ssm/IDS702_Week2_assignment/actions/workflows/main.yml/badge.svg)](https://github.com/Sebine-ssm/IDS702_Week2_assignment/actions/workflows/main.yml)
+
 # IDS706_Week2_assignment
 Global Coffee Health Dataset
 
