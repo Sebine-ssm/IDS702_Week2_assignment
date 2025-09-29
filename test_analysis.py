@@ -6,12 +6,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
 import analysis
 
-# deleted clean_data and analyze_data unittests to avoid duplication as a part of refactoring. 
+
+# Refactared by deleting clean_data and analyze_data
 def load_path(file_path):
-    """ Loads data from a given text file """
+    """Loads data from a given text file"""
     with open(file_path, "r") as file:
         path = file.read().strip().split("\n")
     return path
+
 
 class TestAnalysis(unittest.TestCase):
     def setUp(self):
@@ -24,7 +26,7 @@ class TestAnalysis(unittest.TestCase):
             }
         )
 
-# refactored by using extract method
+    # refactored by using extract method
     def get_clean_data(self):
         return analysis.clean_data(self.df)
 
@@ -42,8 +44,10 @@ class TestAnalysis(unittest.TestCase):
         self.assertAlmostEqual(analyzis["average_age"], (25 + 30 + 35) / 3)
         expected_bmi = (22.5 + 27.8 + 28.9) / 3
         self.assertAlmostEqual(analyzis["average_bmi"], expected_bmi)
-        self.assertAlmostEqual(analyzis["average_sleep_hours"], (7 + 8 + 6) / 3)
-        self.assertAlmostEqual(analyzis["average_heart_rate"], (70 + 75 + 80) / 3)
+        exp_slp_hr = (7 + 8 + 6) / 3
+        self.assertAlmostEqual(analyzis["average_sleep_hours"], exp_slp_hr)
+        exp_hr = (70 + 75 + 80) / 3
+        self.assertAlmostEqual(analyzis["average_heart_rate"], exp_hr)
 
     def test_model_training(self):
         cleaned_df = self.get_clean_data()
@@ -53,7 +57,8 @@ class TestAnalysis(unittest.TestCase):
         model.fit(X, y)
         predictions = model.predict(X)
         self.assertEqual(len(predictions), len(y))
-        self.assertTrue((isinstance(pred, float).all() for pred in predictions)) 
+        for pred in predictions:
+            self.assertTrue(isinstance(pred, float).all())
 
     def test_end_to_end_flow(self):
         df = pd.DataFrame(
@@ -67,7 +72,7 @@ class TestAnalysis(unittest.TestCase):
                 "Physical_Activity_Hours": np.random.uniform(0, 5, 100),
             }
         )
-    # refactored by changing df_cleaned variable name to df_clean
+        # refactored by changing df_cleaned variable name to df_clean
         df_clean = analysis.clean_data(df)
 
         self.assertFalse(df_clean.isnull().values.any())

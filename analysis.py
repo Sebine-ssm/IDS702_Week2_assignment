@@ -116,10 +116,11 @@ y_pred
 print("Mean_sq_error : ", mean_squared_error(y_test, y_pred))
 print("r_sqd : ", r2_score(y_test, y_pred))
 
-coeff = pd.DataFrame({"Feature": X_train.columns, "Coefficient": model.coef_.flatten()})
-
+coeff = pd.DataFrame(
+    {
+        "Feature": X_train.columns, "Coefficient": model.coef_.flatten()
+    })
 print(coeff)
-
 # created these functions to use them in the test file
 def load_data(filepath):
     return pd.read_csv(filepath)
@@ -133,7 +134,6 @@ def clean_data(df):
     df = df[df["BMI"].between(0, 40)]
     df = df[df["Heart_Rate"].between(0, 120)]
     return df
-
 
 def analyze_data(df):
     return {
