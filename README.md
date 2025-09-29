@@ -123,7 +123,7 @@ These tests help ensure the reliability and reproducibility of your data analysi
 Global Coffee Health Dataset
 
 ## Project Overview
-This project analyzes the relationship between Coffee Consumption, Sleeping hours, Age, and BMI with Heart rate. The goal of this project is to see if there is a positive relationship between these two variables or not. 
+This project analyzes the relationship between Coffee Consumption, Sleeping hours, Age, and BMI with Heart rate. The goal of this project is to see if there is a positive relationship between these variables or not. 
 
 ## Data Exploration
 
@@ -161,7 +161,7 @@ From the scatterplot and regression plots, we can see that the relationship betw
 ![Heart Rate vs Coffee Intake (scatterplot)](image-2.png)
 ![Coffee Intake by Gender](image-3.png)
 
-From my analysis I can conclude that there is a poor correlation between the variables plotted in the graphs. 
+From my analysis I can conclude that there is a poor correlation between the variables plotted in the graphs and also from the analysis. 
 
 
 
