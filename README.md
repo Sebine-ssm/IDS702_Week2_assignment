@@ -2,11 +2,16 @@
 
 ## Project Structure
 
-- `analysis.py`: Main analysis script for data processing and visualization.
-- `synthetic_coffee_health.csv`: Dataset used for analysis.
-- `requirements.txt`: Python dependencies.
-- `Makefile`: Common commands for setup and running analysis.
+- `devcontainer': The devcontainer file (more about it in the description).
 - `.gitignore`: Files and folders excluded from version control.
+- `Makefile`: Common commands for setup and running analysis.
+- `README`: The README file which talks about the files used,
+- `analysis.ipynb`: The Jupyter Notebook created and used for this project which has the outputs of the code from the analysis.py file.
+- `analysis.py`: Main analysis script for data processing and visualization.
+- `image files`: The files that have images of the plots presented at the end of this README which were generated through the analysis.ipynb file.
+- `requirements.txt`: Python dependencies.
+- `synthetic_coffee_health.csv`: Dataset used for analysis.
+- `test_analysis.py`: The file that has the test cases to test the analysis.py file's functions.
 
 # Prerequisites:
 - A GitHub account
@@ -148,7 +153,7 @@ Performed Multiple Linear Regression and found out some interesting insights. Th
 
 Created a scatterplot, bar graph and a few regression plots to visualize the results.
 
-From the scatterplot and regression plots, we can see that the relationship between the variables ploted in those graphs have poor correlation. Created a bar graph to just see the proportion of people (categorized by gender) to see how they consume coffee. We can see that men drink little more than women and other. 
+From the scatterplot and regression plots, we can see that the relationship between the variables ploted in those graphs have poor correlation. Created a bar graph to just see the proportion of people (categorized by gender) to see how much coffee they consume. We can see that men drink little more than women and other. 
 
 ## Pictures of plots
 ![BMI vs Coffee Intake (scatterplot)](image-1.png)
@@ -156,8 +161,7 @@ From the scatterplot and regression plots, we can see that the relationship betw
 ![Heart Rate vs Coffee Intake (scatterplot)](image-2.png)
 ![Coffee Intake by Gender](image-3.png)
 
-From my analysis I conclude that there is a poor correlation between Age, Caffeine_mg, Coffee_Intake, BMI, and Sleep_Hours, with Heart_Rate.
-
+From my analysis I can conclude that there is a poor correlation between the variables plotted in the graphs. 
 
 
 
