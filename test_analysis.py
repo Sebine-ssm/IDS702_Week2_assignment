@@ -57,8 +57,7 @@ class TestAnalysis(unittest.TestCase):
         model.fit(X, y)
         predictions = model.predict(X)
         self.assertEqual(len(predictions), len(y))
-        for pred in predictions:
-            self.assertTrue(isinstance(pred, float).all())
+        self.assertTrue(all(isinstance(pred, float) for pred in predictions))
 
     def test_end_to_end_flow(self):
         df = pd.DataFrame(
