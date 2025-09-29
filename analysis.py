@@ -116,14 +116,14 @@ y_pred
 print("Mean_sq_error : ", mean_squared_error(y_test, y_pred))
 print("r_sqd : ", r2_score(y_test, y_pred))
 
-coeff = pd.DataFrame(
-    {
-        "Feature": X_train.columns, "Coefficient": model.coef_.flatten()
-    })
+coeff = pd.DataFrame({"Feature": X_train.columns, "Coefficient": model.coef_.flatten()})
 print(coeff)
+
+
 # created these functions to use them in the test file
 def load_data(filepath):
     return pd.read_csv(filepath)
+
 
 def clean_data(df):
     df = df.copy()
@@ -135,6 +135,7 @@ def clean_data(df):
     df = df[df["Heart_Rate"].between(0, 120)]
     return df
 
+
 def analyze_data(df):
     return {
         "average_age": df["Age"].mean(),
@@ -142,6 +143,7 @@ def analyze_data(df):
         "average_sleep_hours": df["Sleep_Hours"].mean(),
         "average_heart_rate": df["Heart_Rate"].mean(),
     }
+
 
 # refactored the graphing codes to avoid duplication
 def plot_relationships(df):
