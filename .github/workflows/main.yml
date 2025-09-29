@@ -17,6 +17,7 @@ jobs:
         python -m pip install --upgrade pip &&
         pip install -r requirements.txt
     - name: Lint with flake8
-      run: flake8 hello.py
+      run: flake8 --ignore=analysis.py
     - name: Run tests
-      run: pytest --cov=analysis
+      run: pytest --cov=analysis --cov-report=term-missing
+
